@@ -1,0 +1,13 @@
+# GIMP gimp-heal-tool options
+
+(foreground (color-rgb 0.23137255012989044 0.25882354378700256 0.32156863808631897))
+(brush "2. Hardness 075")
+(dynamics "Basic Dynamics")
+(palette "Default")
+(brush-size 43)
+(brush-aspect-ratio -0.10000000000000001)
+(brush-spacing 0.097000000000000017)
+(brush-hardness 0.75)
+(dynamics-expanded yes)
+
+# end of gimp-heal-tool options

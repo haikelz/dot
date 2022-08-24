@@ -1,0 +1,32 @@
+{
+    "no_systray": false,
+    "timeout": 0.0,
+    "recent_thr": 0.1,
+    "compr_cnt": 0,
+    "ignore": [],
+    "position": "fixed",
+    "persist": false,
+    "font_desc": "JetBrainsMono NF Bold 12",
+    "font_size": "small",
+    "font_color": "white",
+    "bg_color": "black",
+    "opacity": 1.0,
+    "key_mode": "composed",
+    "bak_mode": "baked",
+    "mods_mode": "normal",
+    "mods_only": false,
+    "multiline": false,
+    "vis_shift": true,
+    "vis_space": true,
+    "geometry": [
+        1618,
+        55,
+        300,
+        85
+    ],
+    "screen": 0,
+    "window": null,
+    "start_disabled": false,
+    "mouse": true,
+    "button_hide_duration": 1
+}

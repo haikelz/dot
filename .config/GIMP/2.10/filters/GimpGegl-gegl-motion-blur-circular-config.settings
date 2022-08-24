@@ -1,0 +1,9 @@
+# settings
+
+(GimpGegl-gegl-motion-blur-circular-config "2021-09-23 11:23:59"
+    (time 1632371039)
+    (center-x 0.5)
+    (center-y 0.5)
+    (angle 5))
+
+# end of settings

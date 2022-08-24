@@ -1,0 +1,7 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+x",
+        "command": "workbench.extensions.action.installExtensions"
+    }
+]

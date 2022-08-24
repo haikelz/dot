@@ -1,0 +1,96 @@
+#!/bin/bash
+
+# Autostart di bspwmrc
+export PATH="${PATH}:$HOME/.config/bspwm/bin"
+
+# .Xresources
+
+xrdb ~/.Xresources
+getcolors () {
+	FOREGROUND=$(xrdb -query | grep 'foreground:'| awk '{print $NF}')
+	BACKGROUND=$(xrdb -query | grep 'background:'| awk '{print $NF}')
+	BLACK=$(xrdb -query | grep 'color0:'| awk '{print $NF}')
+	RED=$(xrdb -query | grep 'color1:'| awk '{print $NF}')
+	GREEN=$(xrdb -query | grep 'color2:'| awk '{print $NF}')
+	YELLOW=$(xrdb -query | grep 'color3:'| awk '{print $NF}')
+	BLUE=$(xrdb -query | grep 'color4:'| awk '{print $NF}')
+	MAGENTA=$(xrdb -query | grep 'color5:'| awk '{print $NF}')
+	CYAN=$(xrdb -query | grep 'color6:'| awk '{print $NF}')
+	WHITE=$(xrdb -query | grep 'color7:'| awk '{print $NF}')
+}
+getcolors
+
+# Pengaturan workspaces
+
+workspaces() {
+	name=1
+	for monitor in `bspc query -M`; do
+	  bspc monitor ${monitor} -n "$name" -d 'ㇰ' 'ㇱ' 'ㇲ' 'ㇳ' 'ㇴ' 'ㇵ' 'ㇶ' 'ㇷ' 'ㇸ'
+		let name++
+	done
+}
+workspaces
+
+bspc config border_width 2
+bspc config window_gap 5
+bspc config split_ratio 0
+bspc config active_border_color "#7FB5FF"
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config paddingless_monocle true
+bspc config single_monocle false
+bspc config focus_follows_pointer true
+
+# special rules
+
+bspc rule -a Alacritty state=floating follow=on focus=on
+bspc rule -a Viewnior state=floating follow=on focus=on
+bspc rule -a Nm-connection-editor state=floating follow=on focus=on
+
+# xsettingsd
+
+xsettingsd &
+
+# Polkit kde untuk verifikasi
+
+if [ -f /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 ] ; then
+   /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 &
+fi
+
+# Keybindings dengan sxhkd
+
+sxhkd &
+
+# dunst
+
+dunst &
+
+# Super Keys
+
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
+
+# Fix cursor
+
+xsetroot -cursor_name left_ptr
+
+# Restore wallpaper dengan nitrogen
+
+nitrogen --restore
+bspfloat &
+
+# Jalankan Polybar atau tint2, untuk sekarang menggunakan tint2
+
+~/.config/polybar/material/./launch.sh
+
+# Notify
+
+notify-send -u normal "Hai, Haikel...."
+
+# Untuk Speed up Keyboard
+
+xset r rate 250 50
+
+# Profile
+
+source ~/.profile
